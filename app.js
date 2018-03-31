@@ -26,12 +26,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
-var appClientFiles = {
+/*var appClientFiles = {
 		'app_client/app.js': fs.readFileSync("app_client/app.js", "utf8"),
         'app_client/home/home.controller.js': fs.readFileSync("app_client/home/home.controller.js", "utf8"),
         'app_client/locationDetail/locationDetail.controller.js': fs.readFileSync("app_client/locationDetail/locationDetail.controller.js", "utf8"),
         'app_client/about/about.controller.js': fs.readFileSync("app_client/about/about.controller.js", "utf8"),
-        //'app_client/reviewModal/reviewModal.controller.js': fs.readFileSync("app_client/reviewModal/reviewModal.controller.js", "utf8"),
+        'app_client/reviewModal/reviewModal.controller.js': fs.readFileSync("app_client/reviewModal/reviewModal.controller.js", "utf8"),
         'app_client/common/services/geolocation.service.js': fs.readFileSync("app_client/common/services/geolocation.service.js", "utf8"),
         'app_client/common/services/loc8rData.service.js': fs.readFileSync("app_client/common/services/loc8rData.service.js", "utf8"),
         'app_client/common/filters/formatDistance.filter.js': fs.readFileSync("app_client/common/filters/formatDistance.filter.js", "utf8"),
@@ -51,6 +51,7 @@ fs.writeFile('public/javascripts/loc8r.min.js', uglified.code, function (err){
 		console.log('Script generated and saved: loc8r.min.js');
 	}
 });
+*/
 
 
 
