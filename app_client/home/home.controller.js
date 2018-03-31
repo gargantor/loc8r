@@ -1,4 +1,9 @@
+(function() {
+homeCtrl.$inject = ['$scope', 'loc8rData', 'geolocation'];	
 function homeCtrl($scope, loc8rData, geolocation){
+	if (window.location.pathname !== '/') {
+		window.location.href = '/#' + window.location.pathname;
+	}
 	var vm = this;
 	vm.pageHeader = {
 			title: "Loc8r",
@@ -14,14 +19,20 @@ function homeCtrl($scope, loc8rData, geolocation){
 		    lng = position.coords.longitude;
 		vm.message = "Searching for nearby places";
 		loc8rData.locationByCoords(lat,lng)
-		  .success(function(data){
+		.then(function (success){			
+			vm.message = success.data.length > 0 ? "" : "No locations found";  
+			vm.data = {locations: success.data};
+        },function (e){
+        	console.log(e);
+        });
+		  /*.success(function(data){
 			  vm.message = data.length > 0 ? "" : "No locations found";  
 			  vm.data = {locations: data};
 		  })
 		  .error(function(e){
 			  console.log(e);
 			  vm.message = "Sorry, something's gone wrong ";
-		  });
+		  });*/
 	};
 	vm.showError = function(error){
 		$scope.$apply(function(){
@@ -39,3 +50,4 @@ function homeCtrl($scope, loc8rData, geolocation){
 angular
 .module('loc8rApp')
 .controller('homeCtrl', homeCtrl);
+})();
