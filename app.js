@@ -31,6 +31,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'app_client')));
 
 app.use(passport.initialize());
+if(process.env.NODE_ENV !== 'production'){
+	
 
 var appClientFiles = {
 		'app_client/app.js': fs.readFileSync("app_client/app.js", "utf8"),
@@ -61,7 +63,7 @@ fs.writeFile('public/javascripts/loc8r.min.js', uglified.code, function (err){
 		console.log('Script generated and saved: loc8r.min.js');
 	}
 });
-
+}
 
 
 
